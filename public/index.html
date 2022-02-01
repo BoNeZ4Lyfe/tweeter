@@ -27,10 +27,11 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-
+    <script src="./scripts/composer-char-counter.js"></script>
     
   </head>
 
@@ -58,12 +59,11 @@
     <main class="container">
       <section class="new-tweet">
         <form class="form" action="/tweets" method="POST">
-        <label class="form-message" for="tweet-text">What are you humming about?</label>
-        <div><textarea class="form-text" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea></div>
+        <textarea class="form-text" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="form-flex">
             <button class="form-button" type="submit">Tweet</button>
-            <output class="form-counter" name="counter" class="counter" for="tweet-text">140</output>
-            <script src="/w4/tweeter/public/styles/composer-char-counter.js"></script>
+            <output class="form-counter" id="counter"  for="tweet-text">140</output>
+           
           </div>
         </form>
       </section>
@@ -71,3 +71,4 @@
   </main>
   </body>
 </html>
+ 

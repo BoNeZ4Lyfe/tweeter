@@ -3,11 +3,13 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
+  
 }
 
 /*
@@ -15,11 +17,27 @@ html {
  */
 
 body {
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
+background-color: #f3f1ec;
+/* background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png"); */
+font-size: 24px;
+width: 100%;
 }
+
+ .container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 1.5em;
+  width: 90%;
+  background-color: #f3f1ec;
+  color: aliceblue;
+
+} 
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ 

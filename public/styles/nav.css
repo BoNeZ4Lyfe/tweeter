@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.title {
+font-size: 60px;
+font-family: Bungee;
+}
+
+.right-nav-content {
+  font-size: 20px;
+  text-align: center;
+}
+
+
+.message{
+  font-size: 25px;
+  font-family: source sans pro;
+}
+
+
+.bold {
+  font-weight: bold;;
+}
+
+

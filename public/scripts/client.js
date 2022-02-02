@@ -5,55 +5,55 @@
  */
 
 // Fake data taken from initial-tweets.json
-$(document).ready(function() {
-// const data = [
-//   {
-//   user: {
-//   name: "Newton",
-//   avatars: "https://i.imgur.com/73hZDYK.png",
-//   handle: "@SirIsaac"
-//   },
-//   content: {
-//   text: "If I have seen further it is by standing on the shoulders of giants"
-//   },
-//   created_at: 1643582533016
-//   },
-//   {
-//   user: {
-//   name: "Descartes",
-//   avatars: "https://i.imgur.com/nlhLi3I.png",
-//   handle: "@rd"
-//   },
-//   content: {
-//   text: "Je pense , donc je suis"
-//   },
-//   created_at: 1643668933016
-//   }
-// ];
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
+$(document).ready(function () {
+  const data = [
+    {
+      user: {
+        name: "Newton",
+        avatars: "https://i.imgur.com/73hZDYK.png",
+        handle: "@SirIsaac",
+      },
+      content: {
+        text: "If I have seen further it is by standing on the shoulders of giants",
+      },
+      created_at: 1643582533016,
     },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
+    {
+      user: {
+        name: "Descartes",
+        avatars: "https://i.imgur.com/nlhLi3I.png",
+        handle: "@rd",
+      },
+      content: {
+        text: "Je pense , donc je suis",
+      },
+      created_at: 1643668933016,
     },
-  "created_at": 1461116232227
-}
+  ];
+  const tweetData = {
+    user: {
+      name: "Newton",
+      avatars: "https://i.imgur.com/73hZDYK.png",
+      handle: "@SirIsaac",
+    },
+    content: {
+      text: "If I have seen further it is by standing on the shoulders of giants",
+    },
+    created_at: 1461116232227,
+  };
 
-// const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
+    let $html= "";
+    for (let tweet of tweets) {
+      $html += createTweetElement(tweet);
+    }
 
-// for (let tweet of tweets) {
-// createTweetElement(tweet);
-// }
+    $("#tweets").empty().append($html);
+  };
 
-// $("#tweet").append(data);
-// }
+  const createTweetElement = function (tweet) {
+    let $tweet = `
 
-const createTweetElement = function(tweet) {
-let $tweet = `
-<section>
         <article class="tweet">
           <header class="tweet-header">
               <div class="image-name">
@@ -74,15 +74,19 @@ let $tweet = `
             </div>
           </footer>
         </article>
-      </section>
-`
-return $tweet;
-}
-const $tweet = createTweetElement(tweetData);
+`;
+    return $tweet;
+  };
+  const $tweet = createTweetElement(tweetData);
 
-$('#tweet').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+  $("#tweet").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-// renderTweets(data);
+  $(".form").on("submit", (evt) => {
+    evt.preventDefault();
 
+    const $post = $(".form").serialize();
+    $.post("/tweets", $post).then(() => {
+      renderTweets(data);
+    });
+  });
 });
-

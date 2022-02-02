@@ -22,7 +22,7 @@ body nav{
    background-color: #4056A1;
    }
 .title {
-font-size: 45px;
+font-size: 35px;
 font-family: Bungee;
 }
 
@@ -36,7 +36,9 @@ font-family: Bungee;
   font-size: 25px;
   font-family: source sans pro;
 }
-
+#angle {
+  color: red;
+}
 
 .bold {
   font-weight: bold;;

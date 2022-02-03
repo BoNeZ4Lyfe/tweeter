@@ -30,8 +30,9 @@ $(document).ready(function () {
       const $post = $(".form").serialize();
     $.post("/tweets", $post).then(() => {
       //renderTweets(data);
+      loadTweets();
     });
-    loadTweets();
+    
     }
 });
 });
@@ -74,7 +75,8 @@ const createTweetElement = function (tweet) {
 
 const renderTweets = function (tweets) {
   let $html = "";
-  for (let tweet of tweets) {
+  let orderOfTweets = tweets.reverse();
+  for (let tweet of orderOfTweets) {
     $html += createTweetElement(tweet);
   }
 

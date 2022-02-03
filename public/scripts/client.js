@@ -4,37 +4,63 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
 $(document).ready(function () {
+  //fetch tweets
+  // $(".form").on("submit", (evt) => {
+  //   evt.preventDefault();
 
-  $(".form").on("submit", (evt) => {
+  //   const $post = $(".form").serialize();
+  //   $.post("/tweets", $post).then(() => {
+  //     renderTweets(data);
+  //   });
+  // });
+
+  // loadTweets();
+
+  //validation
+  $(".form").on('submit', function(evt) {
     evt.preventDefault();
+    let input = $('.form-text').val().length;
 
-    const $post = $(".form").serialize();
+    if (!input) {
+      alert('Nothing was entered');
+    } else if (input > 140) {
+      alert('Exceeded character limit');
+    } else {
+      const $post = $(".form").serialize();
     $.post("/tweets", $post).then(() => {
-      renderTweets(data);
+      //renderTweets(data);
     });
-  });
-
-  loadTweets();
+    loadTweets();
+    }
+});
 });
 
+  
+
+  
 
 const createTweetElement = function (tweet) {
+  let avatar = tweet.user.avatars;
+  let userName = tweet.user.name;
+  let handle = tweet.user.handle;
+  let message = tweet.content.text;
+  let time = timeago.format(tweet.created_at);
+
   let $tweet = `
       <article class="tweet">
         <header class="tweet-header">
             <div class="image-name">
-              <img src="${tweet.user.avatars}" class="tweet-image"/>
-              <h3 class="tweet-name">${tweet.user.name}</h3>
+              <img src="${avatar}" class="tweet-image"/>
+              <h3 class="tweet-name">${userName}</h3>
             </div>
             <div class="handle">
-              <h4 class="tweet-username"> ${tweet.user.handle}</h4>
+              <h4 class="tweet-username"> ${handle}</h4>
             </div>
         </header>
-        <p class="tweet-characters">${tweet.content.text}</p>
+        <p class="tweet-characters">${message}</p>
         <footer class="tweet-footer">
-          <p class="footer-age">${timeago.format(tweet.created_at)}</p>
+          <p class="footer-age">${time}</p>
           <div class="footer-icon">
             <i id="flag"class="fas fa-flag"></i>
             <i id="retweet"class="fas fa-retweet"></i>
@@ -50,7 +76,6 @@ const renderTweets = function (tweets) {
   let $html = "";
   for (let tweet of tweets) {
     $html += createTweetElement(tweet);
-    console.log(tweet);
   }
 
   $("#tweets").empty().append($html);

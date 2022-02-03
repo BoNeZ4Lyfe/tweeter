@@ -43,4 +43,6 @@
   
 }
 
-
+#exceed-error, #empty-error {
+  color:red;
+}

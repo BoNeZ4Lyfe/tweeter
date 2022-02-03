@@ -5,48 +5,39 @@
  */
 
 $(document).ready(function () {
-  //fetch tweets
-  // $(".form").on("submit", (evt) => {
-  //   evt.preventDefault();
-
-  //   const $post = $(".form").serialize();
-  //   $.post("/tweets", $post).then(() => {
-  //     renderTweets(data);
-  //   });
-  // });
-
-  // loadTweets();
+  loadTweets();
 
   //validation
-  $(".form").on('submit', function(evt) {
+  $(".form").on("submit", function (evt) {
     evt.preventDefault();
-    let input = $('.form-text').val().length;
+    let input = $(".form-text").val().length;
 
     if (!input) {
-      alert('Nothing was entered');
+      $("#empty-error").show().append("Nothing was entered");
+      setTimeout(() => {
+        $("#empty-error").empty();
+      }, 3000);
     } else if (input > 140) {
-      alert('Exceeded character limit');
+      $("#exceed-error").show().append("Exceeded character limit");
+      setTimeout(() => {
+        $("#exceed-error").empty();
+      }, 3000);
     } else {
       const $post = $(".form").serialize();
-    $.post("/tweets", $post).then(() => {
-      //renderTweets(data);
-      loadTweets();
-    });
-    
+      $.post("/tweets", $post).then(() => {
+        let emptyInput = $(".form-text").val("");
+        loadTweets();
+      });
     }
+  });
 });
-});
-
-  
-
-  
 
 const createTweetElement = function (tweet) {
-  let avatar = tweet.user.avatars;
-  let userName = tweet.user.name;
-  let handle = tweet.user.handle;
-  let message = tweet.content.text;
-  let time = timeago.format(tweet.created_at);
+  let avatar = escapeXss(tweet.user.avatars);
+  let userName = escapeXss(tweet.user.name);
+  let handle = escapeXss(tweet.user.handle);
+  let message = escapeXss(tweet.content.text);
+  let time = escapeXss(timeago.format(tweet.created_at));
 
   let $tweet = `
       <article class="tweet">
@@ -87,4 +78,10 @@ const loadTweets = () => {
   $.get("http://localhost:8080/tweets", function (data, status) {
     renderTweets(data);
   });
+};
+
+const escapeXss = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };

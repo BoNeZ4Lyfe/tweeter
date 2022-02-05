@@ -1,6 +1,6 @@
 .tweet {
   border: 5px solid black;
-  padding:20px;
+  padding: 20px;
   margin-top: 60px;
   font-family: source sans pro;
   color: black;
@@ -11,7 +11,6 @@
 }
 
 .tweet-header {
-
   background: #f3f1ec;
   display: flex;
   justify-content: space-between;
@@ -26,9 +25,10 @@
 }
 
 .tweet-image {
-margin-right: 20px;
-height: 60px;
-width: 60px;
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 60px;
+  width: 60px;
 }
 
 .image-name {
@@ -40,7 +40,7 @@ width: 60px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: -.7em;
+  margin-left: -0.7em;
 }
 
 .tweet-username {
@@ -51,7 +51,7 @@ width: 60px;
 .tweet-characters {
   display: flex;
   justify-content: start;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   border: none;
   border-bottom: black solid 5px;
 }
@@ -62,9 +62,21 @@ width: 60px;
 }
 
 .footer-age {
-font-size: 20px;
+  font-size: 20px;
 }
 
-#flag:hover, #retweet:hover, #heart:hover {
+#flag:hover,
+#retweet:hover,
+#heart:hover {
   color: orange;
+}
+
+@media (min-width: 1024px) {
+  #tweet {
+    border: 5px solid black;
+    padding: 20px;
+    margin-right: 60%;
+    font-family: source sans pro;
+    color: black;
+  }
 }

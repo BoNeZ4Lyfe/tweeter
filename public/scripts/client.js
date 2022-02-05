@@ -11,7 +11,6 @@ $(document).ready(function () {
   $(".form").on("submit", function (evt) {
     evt.preventDefault();
     let input = $(".form-text").val().length;
-
     if (!input) {
       $("#empty-error").show().append("Nothing was entered");
       setTimeout(() => {
@@ -25,7 +24,7 @@ $(document).ready(function () {
     } else {
       const $post = $(".form").serialize();
       $.post("/tweets", $post).then(() => {
-        let emptyInput = $(".form-text").val("");
+        let resetInput = $(".form-text").val("");
         loadTweets();
       });
     }

@@ -3,13 +3,14 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
- html {
+html {
   box-sizing: border-box;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
-  
 }
 
 /*
@@ -17,13 +18,13 @@
  */
 
 body {
-background-color: #f3f1ec;
-/* background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png"); */
-font-size: 24px;
-width: 100%;
+  background-color: #f3f1ec;
+  /* background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png"); */
+  font-size: 24px;
+  width: 100%;
 }
 
- .container{
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -32,12 +33,31 @@ width: 100%;
   width: 90%;
   background-color: #f3f1ec;
   color: aliceblue;
-
-} 
-
+}
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- 
+@media (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin: 50px;
+    width: auto;
+    box-sizing: border-box;
+  }
+
+  .profile {
+    position: absolute;
+    box-sizing: border-box;
+    top: 193px;
+    height: 400px;
+    margin: 10px;
+    width: 40%;
+    background-color: #4056a1;
+    color: beige;
+  }
+}
